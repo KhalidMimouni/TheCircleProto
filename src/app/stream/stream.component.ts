@@ -33,7 +33,8 @@ export class StreamComponent implements OnInit {
     this.mediaRecorder.ondataavailable = e => {
       e.data.arrayBuffer().then(arrayBuffer => {
         this.socketService.emitStream(arrayBuffer, 1)
-        console.log(arrayBuffer)
+        
+        console.log("kijk hiero" + arrayBuffer)
       })
       // this.socketService.emitStream(e.data, 1)
       // console.log(e.data)
