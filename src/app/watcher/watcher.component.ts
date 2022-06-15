@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+
 import { SocketserviceService } from '../socketservice.service';
 
 
@@ -15,7 +16,7 @@ export class WatcherComponent implements OnInit, AfterViewInit {
   
   private mimeCodec = 'video/webm;codecs=vp9,opus'
   private mediaSource = new MediaSource()
-  private sourceBuffer?: SourceBuffer
+  public sourceBuffer?: SourceBuffer
   private queue: any[] = []
   constructor(socketService: SocketserviceService) {
     this.socketService = socketService;
@@ -33,12 +34,12 @@ export class WatcherComponent implements OnInit, AfterViewInit {
       
       this.socketService.socket.on('stream', stream => {
         console.log('receiving stream from streamer')
-        console.log(MediaSource.isTypeSupported('video/webm;codecs=vp9,opus'))
-        console.log(stream)
-  
-        console.log(this.sourceBuffer)
         
-        this.sourceBuffer?.appendBuffer(stream)
+        console.log(stream)
+        
+        console.log(this.sourceBuffer)
+        var uint8array = new Int8Array(stream)
+        this.sourceBuffer?.appendBuffer(uint8array)
         
         
       })
@@ -58,6 +59,7 @@ export class WatcherComponent implements OnInit, AfterViewInit {
     // })
     
   }
+  
   
   
   

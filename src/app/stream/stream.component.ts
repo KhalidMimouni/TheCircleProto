@@ -29,16 +29,26 @@ export class StreamComponent implements OnInit {
     this.videoPlayer.nativeElement.srcObject = this.localStream;
     this.mediaRecorder = new MediaRecorder(this.localStream, {mimeType: this.mimeCodec})
     
-    this.mediaRecorder.start(5000)
+    // this.mediaRecorder.start(5000)
     this.mediaRecorder.ondataavailable = e => {
-      e.data.arrayBuffer().then(arrayBuffer => {
-        this.socketService.emitStream(arrayBuffer, 1)
-        console.log(arrayBuffer)
+      e.data.arrayBuffer().then(buffer => {
+        const uint8array = new Int8Array(buffer)
+        
+        this.socketService.emitStream(uint8array, 1)
       })
-      // this.socketService.emitStream(e.data, 1)
-      // console.log(e.data)
-
+      
+      
     }
+    this.mediaRecorder.start()
+    
+      setInterval(() => {
+        console.log('interval wordt aangeroepen')
+        this.mediaRecorder?.stop()
+        this.mediaRecorder?.start()
+      }, 5000);
+    
+    
+    
     
     
     
