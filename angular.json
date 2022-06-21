@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "CirclePrototype"
+  "defaultProject": "CirclePrototype",
+  "cli": {
+    "analytics": false
+  }
 }
