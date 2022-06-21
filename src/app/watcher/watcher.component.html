@@ -1,5 +1,17 @@
-<p>watcher works!</p>
 
-<video id='videoPlayer' controls>
-</video>
 
+<div class="container">
+    <div class="container">
+        <video #videoPlayer autoplay controls>
+        </video>
+    </div>
+    <div>
+        <input type="text" [formControl]="chat" placeholder="message">
+        <button type="button" (click)="sendchat()">Send message</button>
+    </div>
+    <div class="container">
+        <tr *ngFor="let message of messages">
+            <p>{{message}}</p>
+        </tr>
+    </div>
+</div>

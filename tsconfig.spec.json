@@ -3,8 +3,13 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
+    "strict": false,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "lib": ["es2021.String"],
     "types": [
-      "jasmine"
+      "jasmine",
+      "node"
     ]
   },
   "files": [

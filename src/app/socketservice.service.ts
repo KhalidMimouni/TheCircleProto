@@ -15,9 +15,19 @@ export class SocketserviceService {
     this.socket.emit('viewer-join', roomId)
   }
 
-  public emitStream(stream: any, roomId: any){
-    this.socket.emit('host-streaming', {stream: stream, roomId: roomId})
+  public emitStream(stream: any, roomId: any, signature: any){
+    this.socket.emit('host-streaming', {stream: stream, roomId: roomId, signature: signature})
   }
 
+  public joinChat(roomId : any){
+    this.socket.emit('join-chat', roomId)
+  }
 
+  public sendChat(message : String, roomId : any){
+    this.socket.emit('send-chat', {chat: message, roomId : roomId})
+  }
+
+  public leaveSession(roomId : any){
+    this.socket.emit('leave-session', roomId)
+  }
 }

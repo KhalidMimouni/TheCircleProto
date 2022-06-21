@@ -1,4 +1,29 @@
-<p>stream works!</p>
 
-<video #videoTrack controls autoplay>
-</video>
+<div class="container justify-content-center" style="text-align: center;">
+    <div class="container">
+        <div class="container">
+            <video #videoTrack controls autoplay></video>
+            <div class="container">
+                <input type="text" [formControl]="chat" placeholder="message">
+                <button type="button" (click)="sendchat()">Send message</button>
+                <div>
+                    <h4>Aantal kijkers: {{followers}}</h4>
+                </div>
+                <div class="container" style="padding-top: 5%;">
+                    <h3>CHAT</h3>
+                    <div class="container" style="text-align: left; padding-left: 35%">
+                        <div class="container">
+                            <div *ngFor="let message of messages">
+                                <li>{{message}}</li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+
