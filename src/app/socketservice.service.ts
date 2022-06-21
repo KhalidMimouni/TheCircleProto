@@ -6,7 +6,8 @@ import { io } from 'socket.io-client'
 })
 export class SocketserviceService {
 
-  socket = io('localhost:3000')
+  // socket = io('http://hetrondje.bogaers.org:4000/')
+  socket = io('http://hetrondje.bogaers.org:4000')
 
   constructor() { }
 

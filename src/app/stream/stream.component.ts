@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+
 import { SocketserviceService } from '../socketservice.service';
 
 @Component({
@@ -38,14 +39,15 @@ export class StreamComponent implements OnInit {
       })
       
       
+      
     }
-    this.mediaRecorder.start()
+    this.mediaRecorder.start(1000)
     
-      setInterval(() => {
-        console.log('interval wordt aangeroepen')
-        this.mediaRecorder?.stop()
-        this.mediaRecorder?.start()
-      }, 5000);
+      // setInterval(() => {
+      //   console.log('interval wordt aangeroepen')
+      //   this.mediaRecorder?.stop()
+      //   this.mediaRecorder?.start()
+      // }, 5000);
     
     
     
