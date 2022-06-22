@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 
 import { SocketserviceService } from '../socketservice.service';
 
@@ -8,6 +8,12 @@ import { SocketserviceService } from '../socketservice.service';
   styleUrls: ['./stream.component.css']
 })
 export class StreamComponent implements OnInit {
+  // @HostListener('window:beforeunload', ['$event'])
+  //   onBeforeUnload($event: any){
+  //     console.log('leaving page')
+  //     this.socketService.leaveSocketAsHost()
+  //   }
+
 
   private localStream?: MediaStream
   private mediaRecorder?: MediaRecorder
@@ -21,6 +27,7 @@ export class StreamComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.socketService.joinSocketAsHost();
     this.requestAudioAndVideoFromUser();
     
   }

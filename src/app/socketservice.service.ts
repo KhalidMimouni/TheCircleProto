@@ -19,5 +19,13 @@ export class SocketserviceService {
     this.socket.emit('host-streaming', {stream: stream, roomId: roomId})
   }
 
+  public joinSocketAsHost(){
+    this.socket.emit('host-join')
+  }
+
+  public leaveSocketAsHost(){
+    this.socket.emit('host-disconnected')
+  }
+
 
 }
